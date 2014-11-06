@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Sketchfab Browse</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Titillium+Web:400,200,300,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="dist/main.css">
+    <script type="text/javascript" src="node_modules/localforage/dist/localforage.js"></script>
+    <script type="text/javascript" src="dist/main.js" async></script>
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="logo">
+                <a href="#"><img src="assets/img/logo-sketchfab-white.png" width="140"></a>
+            </div>
+            <div class="toobar">
+                <form class="toolbar-tool" id="search">
+                    <div class="search">
+                        <input type="search" class="search-field" placeholder="Search">
+                        <button type="submit" class="search-btn"><i class="icon ion-search"></i></button>
+                    </div>
+                </form>
+            </div>
+            <div class="filters">
+                <div class="btn-group sort-by">
+                    <button class="btn btn-small" value="-likeCount">Liked</button>
+                    <button class="btn btn-small" value="-viewCount">Popular</button>
+                    <button class="btn btn-small" value="-createdAt">Recent</button>
+                </div>
+            </div>
+        </header>
+        <div class="main">
+            <div class="sidebar">
+                <div class="navigation-main section animated fadeInLeft">
+                    <ul class="sidebar-menu">
+                        <li class="item"><a href="#"><i class="icon ion-ios7-home"></i> Home</a></li>
+                        <li class="item"><a href="#staffpicks"><i class="icon ion-ios7-heart"></i> Staff Picks</a></li>
+                        <li class="item"><a href="#popular"><i class="icon ion-connection-bars"></i> Popular</a></li>
+                        <li class="item"><a href="#recent"><i class="icon ion-ios7-clock"></i> All models</a></li>
+                    </ul>
+                </div>
+                <div class="navigation-categories section animated fadeInLeft">
+                    <h2 class="sidebar-title" style="border-top: 1px solid rgba(255,255,255,.1); padding-top:20px;">
+                        Categories
+                    </h2>
+                    <ul class="categories sidebar-menu">
+                        <li class="item">
+                            <a href="#cat/71260eecdab14a92859a1630e69b5e59">3d scans</a>
+                        </li>
+                        <li class="item">
+                            <a href="#cat/7c8e6d2ef6e34acfafb4dfdd2eac8e9a">Architecture</a>
+                        </li>
+                        <li class="item">
+                            <a href="#cat/7b69e7e004ab4e468fa11350a9e9dbb4">Animal</a>
+                        </li>
+                        <li class="item">
+                            <a href="#cat/c92452986e70422ca2c6552835a89882">Characters</a>
+                        </li>
+                        <li class="item">
+                            <a href="#cat/232cf6b0e479418fb9845165ea855ff7">Games</a>
+                        </li>
+                        <li class="item">
+                            <a href="#cat/528c1d6ede944cf685b2b36eb595f26d">Miscellaneous</a>
+                        </li>
+                        <li class="item">
+                            <a href="#cat/dccdb5378e924075aaee17288b6b2df1">Objects</a>
+                        </li>
+                        <li class="item">
+                            <a href="#cat/04b6d4d0e43c403f8f226c374b5381ea">Scenes</a>
+                        </li>
+                        <li class="item">
+                            <a href="#cat/e4a6ff21ea0042ff9f0f64db2d0adaec">Science</a>
+                        </li>
+                        <li class="item">
+                            <a href="#cat/dbe6cb768f2d4b31ba1611d3229d7431">Vegetal</a>
+                        </li>
+                        <li class="item">
+                            <a href="#cat/cf442dbc806b432d9e13f4dc3b1df0c0">Vehicles</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content">
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

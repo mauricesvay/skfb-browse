@@ -1,0 +1,43 @@
+body,
+.app {
+    width: 100%;
+    height: 100%;
+}
+
+.header {
+    position: absolute;
+    height: 60px;
+    width: 100%;
+}
+    .logo {
+        float: left;
+        width: 240px;
+        height: 100%;
+    }
+
+.main {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.sidebar {
+    position: absolute;
+    width: 240px;
+    height: 100%;
+    overflow: auto;
+    padding: 20px;
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    left: 240px;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    overflow: auto;
+}

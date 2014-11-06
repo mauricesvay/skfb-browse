@@ -1,0 +1,42 @@
+'use strict';
+
+var $ = require('jquery');
+var Backbone = require('backbone');
+var _ = require('underscore');
+
+var Router = Backbone.Router.extend({
+
+    routes: {
+        '' : 'homepage',
+        'popular': 'popular',
+        'staffpicks': 'staffpicks',
+        'recent': 'recent',
+        'cat/:category': 'category',
+    },
+
+    initialize: function( options ) {
+        this.appView = options.appView;
+    },
+
+    homepage: function() {
+        this.appView.goTo('homepage');
+    },
+
+    popular: function() {
+        this.appView.goTo('popular');
+    },
+
+    staffpicks: function() {
+        this.appView.goTo('staffpicks');
+    },
+
+    recent: function() {
+        this.appView.goTo('recent');
+    },
+
+    category: function( id ) {
+        this.appView.goTo('category', id );
+    }
+});
+
+module.exports = Router;

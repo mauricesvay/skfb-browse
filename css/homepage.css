@@ -1,0 +1,49 @@
+.homepage {
+    padding: 20px;
+}
+
+    .hero {
+        height: 300px;
+        border-radius: 4px;
+
+        background: #555;
+        box-shadow: 0 2px 5px rgba(80, 80, 80, .2);
+        color: #FFF;
+    }
+        .hero h1,
+        .hero h2 {
+            margin: 0;
+        }
+        .hero h1 {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            font-size: 1em;
+            font-weight: 200;
+            text-transform: uppercase;
+            font-family: "Titillium Web";
+        }
+        .hero h2 {
+            position: absolute;
+            top: 70px;
+            left: 40px;
+
+            font-family: "Titillium Web";
+            font-weight: normal;
+        }
+
+.slider {
+    position: relative;
+}
+    .slider-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        opacity: 0;
+    }
+    .slider-slide:first-child {
+        opacity: 1;
+    }
