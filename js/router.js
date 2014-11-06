@@ -12,6 +12,7 @@ var Router = Backbone.Router.extend({
         'staffpicks': 'staffpicks',
         'recent': 'recent',
         'cat/:category': 'category',
+        'likes/:uid': 'likes',
     },
 
     initialize: function( options ) {
@@ -36,6 +37,10 @@ var Router = Backbone.Router.extend({
 
     category: function( id ) {
         this.appView.goTo('category', id );
+    },
+
+    likes: function( uid ) {
+        this.appView.goTo('likes', uid );
     }
 });
 

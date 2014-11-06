@@ -135,6 +135,16 @@ var AppView = Backbone.View.extend({
                     options: options
                 });
                 break;
+            case 'likes':
+                this.disableFilters();
+                options = {
+                    'liked_by_filter': params,
+                    'sort_by': ''
+                };
+                this.currentView = new ModelsView({
+                    options: options
+                });
+                break;
             default:
                 break;
         }
