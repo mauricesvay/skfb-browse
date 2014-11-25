@@ -8,18 +8,18 @@ Backbone.$ = $;
 
 var Model = require('../models/Model');
 
-$.ajaxPrefilter(function(options, originalOptions, jqXHR) {
-    var url;
-    if ( originalOptions.data ) {
-        url = originalOptions.url + '?' + $.param(originalOptions.data);
-    } else {
-        url = originalOptions.url
-    }
-    if (options.crossDomain) {
-        options.url = "http://www.inertie.org/ba-simple-proxy.php?mode=native&url=" + encodeURIComponent(url);
-        options.crossDomain = false;
-    }
-});
+// $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+//     var url;
+//     if ( originalOptions.data ) {
+//         url = originalOptions.url + '?' + $.param(originalOptions.data);
+//     } else {
+//         url = originalOptions.url
+//     }
+//     if (options.crossDomain) {
+//         options.url = "http://www.inertie.org/ba-simple-proxy.php?mode=native&url=" + encodeURIComponent(url);
+//         options.crossDomain = false;
+//     }
+// });
 
 var Models = Backbone.Collection.extend({
 
