@@ -1,7 +1,11 @@
+'use strict';
+
 var $ = require('jquery');
-var Backbone = require('backbone');
 var _ = require('underscore');
+var localforage = require('localforage');
+var Backbone = require('backbone');
 Backbone.$ = $;
+
 var Model = require('../models/Model');
 
 $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
@@ -46,6 +50,7 @@ var Models = Backbone.Collection.extend({
 
         // Get allowed params from options
         // use default values when not found
+        var prop;
         for (prop in allowed) {
             if (_.has(options, prop)) {
                 params[prop] = options[prop];

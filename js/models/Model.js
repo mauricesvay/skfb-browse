@@ -1,5 +1,10 @@
+'use strict';
+
 var $ = require('jquery');
+var _ = require('underscore');
+var localforage = require('localforage');
 var Backbone = require('backbone');
+Backbone.$ = $;
 
 var Model = Backbone.Model.extend({
 
