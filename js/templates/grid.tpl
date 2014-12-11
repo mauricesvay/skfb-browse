@@ -3,11 +3,7 @@
     <li class="grid-item">
         <div class="modelcard" data-uid="<%= models[i].uid %>">
             <a href="<%= models[i].viewerUrl %>" target="_blank">
-                <% if (models[i] && models[i].thumbnails && models[i].thumbnails.images &&  models[i].thumbnails.images[3] ) {  %>
-                <div class="modelcard-preview" style="background-image: url(<%= models[i].thumbnails.images[3].url %>)">
-                <% } else {  %>
-                <div class="modelcard-preview">
-                <% } %>
+                <div class="modelcard-preview" style="background-image: url(<%= models[i].preview %>)">
                     <div class="fallback-container">
                     </div>
                     <div class="fallback-loader"></div>

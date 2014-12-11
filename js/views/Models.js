@@ -108,6 +108,19 @@ var AppView = Backbone.View.extend({
 
     render: function() {
         var data = this.model.toJSON();
+
+        // Populate previews
+        var images;
+        for (var i=0; i<data.length; i++) {
+            images = data[i].thumbnails.images;
+            for (var j=0; j<images.length; j++) {
+                data[i].preview = images[j].url;
+                if ( images[j].width > 400 ) {
+                    break;
+                }
+            }
+        }
+
         var html = this.tpl( { models : data } );
         this.$el.html( html );
         return this;
