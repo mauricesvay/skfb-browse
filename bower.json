@@ -15,6 +15,7 @@
   ],
   "dependencies": {
     "ionicons": "~1.5.2",
-    "normalize-css": "~3.0.2"
+    "normalize-css": "~3.0.2",
+    "animate.css": "~3.2.3"
   }
 }
