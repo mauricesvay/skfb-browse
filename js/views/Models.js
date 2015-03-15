@@ -7,12 +7,9 @@ var Steady = require('steady');
 var React = require('react');
 
 var Models = require('../collections/Models');
-var tplGrid = require('../templates/grid.tpl');
 var Grid = require('../components/Grid.jsx');
 
 var AppView = Backbone.View.extend({
-
-    tpl: _.template(tplGrid),
 
     tagName: 'div',
 
