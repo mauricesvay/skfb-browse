@@ -1,5 +1,6 @@
 var browserify = require('browserify');
 var stringify = require('stringify');
+var reactify = require('reactify');
 var source = require('vinyl-source-stream');
 var pkg = require('./package.json');
 
@@ -12,6 +13,7 @@ var concat = require('gulp-concat');
 gulp.task('browserify', function() {
     return browserify(['./js/main.js'], {
             'debug': false,
+            transform: ['reactify']
         })
         .transform(stringify(['.tpl']))
         .bundle()
