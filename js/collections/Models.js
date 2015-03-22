@@ -64,54 +64,77 @@ var Models = Backbone.Collection.extend({
         this.params = params;
     },
 
-    loadMore: function( options ) {
+    loadMore: function(options) {
         if (this.params['offset']) {
             this.params['offset'] += this.params['count'];
         } else {
             this.params['offset'] = this.params['count'];
         }
-        this.fetch( _.extend(options, {
+        this.fetch(_.extend(options, {
             reset: false,
             remove: false
         }));
+    },
+
+    prefetch: function() {
+        var prefetchParams = _.clone(this.params);
+        if (prefetchParams['offset']) {
+            prefetchParams['offset'] += prefetchParams['count'];
+        } else {
+            prefetchParams['offset'] = prefetchParams['count'];
+        }
+        var key = this.url + '?' + $.param(prefetchParams);
+        console.log('Prefetch ' + key);
+        this._fetch(this.url, prefetchParams, key);
     },
 
     sync: function(method, model, options) {
 
         if (method === 'read') {
 
-            var key = this.url + '?' + $.param( this.params );
+            var key = this.url + '?' + $.param(this.params);
             var ttl = 10 * 60 * 1000;
             console.log(key);
 
-            localforage.getItem(key).then( function(cached) {
-                if ( cached && ( Date.now() - cached.date < ttl ) ) {
+            localforage.getItem(key).then(function(cached) {
+                if (cached && (Date.now() - cached.date < ttl)) {
                     console.log('Cache hit ' + key);
-                    setTimeout(function(){
+                    setTimeout(function() {
                         options.success && options.success(cached.data);
-                    },1);
+                    }, 1);
                 } else {
                     console.log('Cache miss ' + key);
-                    $.ajax({
-                        'url': this.url,
-                        'data': this.params,
-                        'dataType': 'json',
-                        'crossDomain': true,
-                        'success': function(data, status, xhr) {
-                            localforage.setItem(key, {
-                                date: Date.now(),
-                                data: data.results
-                            });
+                    this._fetch(this.url, this.params, key)
+                        .done(function(data, status, xhr) {
                             options.success && options.success(data.results);
-                        },
-                        'error': function(xhr, status, error) {
+                        })
+                        .fail(function(xhr, status, error) {
                             console.log('Error while fetching data');
-                        }
-                    });
+                        });
                 }
             }.bind(this));
 
         }
+    },
+
+    _fetch: function(url, params, cacheKey) {
+        var deferred = $.ajax({
+            'url': url,
+            'data': params,
+            'dataType': 'json',
+            'crossDomain': true
+        });
+
+        if (cacheKey) {
+            deferred.done(function(data, status, xhr) {
+                localforage.setItem(cacheKey, {
+                    date: Date.now(),
+                    data: data.results
+                });
+            });
+        }
+
+        return deferred;
     }
 });
 

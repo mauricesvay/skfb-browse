@@ -39,6 +39,7 @@ var AppView = Backbone.View.extend({
         this.model.fetch({
             success: function() {
                 self.render();
+                self.model.prefetch();
             }
         });
     },
@@ -59,6 +60,7 @@ var AppView = Backbone.View.extend({
                 done && done();
                 self.endLoading();
                 self.render();
+                self.model.prefetch();
             }
         } );
     },
