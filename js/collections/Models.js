@@ -94,16 +94,15 @@ var Models = Backbone.Collection.extend({
 
             var key = this.url + '?' + $.param(this.params);
             var ttl = 10 * 60 * 1000;
-            console.log(key);
 
             localforage.getItem(key).then(function(cached) {
                 if (cached && (Date.now() - cached.date < ttl)) {
-                    console.log('Cache hit ' + key);
+                    console.info('Cache hit ' + key);
                     setTimeout(function() {
                         options.success && options.success(cached.data);
                     }, 1);
                 } else {
-                    console.log('Cache miss ' + key);
+                    console.warn('Cache miss ' + key);
                     this._fetch(this.url, this.params, key)
                         .done(function(data, status, xhr) {
                             options.success && options.success(data.results);
@@ -127,6 +126,7 @@ var Models = Backbone.Collection.extend({
 
         if (cacheKey) {
             deferred.done(function(data, status, xhr) {
+                console.info('Caching ' + cacheKey);
                 localforage.setItem(cacheKey, {
                     date: Date.now(),
                     data: data.results

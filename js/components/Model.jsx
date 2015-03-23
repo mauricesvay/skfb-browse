@@ -1,4 +1,5 @@
 var React = require('react');
+var _ = require('underscore');
 
 var Model = React.createClass({
 
@@ -24,11 +25,11 @@ var Model = React.createClass({
 
     render: function() {
 
-        var images = this.props.model.thumbnails.images;
+        var images = _.sortBy(this.props.model.thumbnails.images, 'width');
         var preview;
         for (var j=0; j<images.length; j++) {
             preview = images[j].url;
-            if ( images[j].width > 400 ) {
+            if ( images[j].width >= 400 ) {
                 break;
             }
         }
