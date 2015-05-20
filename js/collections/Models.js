@@ -33,16 +33,16 @@ var Models = Backbone.Collection.extend({
             'offset': null,
             'search': null, // query
 
-            'flag_filter': null, // 'staffpicked'
-            'categories_filter': null, // category id
-            'tags_filter': null, // tag
-            'date_filter': null, // number of days
-            'face_count_filter': null,
+            'flag': null, // 'staffpicked'
+            'categories': null, // category id
+            'tags': null, // tag
+            'date': null, // number of days
+            'face_count': null,
             'sort_by': '-createdAt', // '-createdAt', '-viewCount'
 
-            'liked_by_filter': null, // user id
-            'user_filter': null, // user id
-            'folder_filter': null // folder id
+            'liked_by': null, // user id
+            'user': null, // user id
+            'folder': null // folder id
         };
         var params = {};
 

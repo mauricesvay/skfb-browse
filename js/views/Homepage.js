@@ -16,7 +16,7 @@ var Homepage = Backbone.View.extend({
 
         //Prefetch staffpicks
         var prefetch = new Models([], {
-            'flag_filter': 'staffpicked'
+            'flag': 'staffpicked'
         });
         prefetch.fetch();
     },

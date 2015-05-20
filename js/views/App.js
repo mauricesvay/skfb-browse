@@ -36,9 +36,9 @@ var AppView = Backbone.View.extend({
 
         this.listenTo(this.browseModel, 'change:sortBy', function( model ){
             if ( model.get('sortBy') === '-viewCount' || model.get('sortBy') === '-likeCount') {
-                this.browseModel.set('date_filter', 31);
+                this.browseModel.set('date', 31);
             } else {
-                this.browseModel.set('date_filter', '');
+                this.browseModel.set('date', '');
             }
             this.goTo(this.currentPage, this.params);
         }.bind(this));
@@ -86,7 +86,7 @@ var AppView = Backbone.View.extend({
             case 'staffpicks':
                 this.disableFilters();
                 options = {
-                    'flag_filter': 'staffpicked'
+                    'flag': 'staffpicked'
                 }
                 console.log(options);
                 this.currentView = new ModelsView({
@@ -96,7 +96,7 @@ var AppView = Backbone.View.extend({
             case 'popular':
                 this.disableFilters();
                 options = {
-                    'date_filter': 7,
+                    'date': 7,
                     'sort_by': '-viewCount'
                 }
                 this.currentView = new ModelsView({
@@ -107,7 +107,7 @@ var AppView = Backbone.View.extend({
                 this.enableFilters();
                 options = {
                     'sort_by': this.browseModel.get('sortBy'),
-                    'date_filter': this.browseModel.get('date_filter')
+                    'date': this.browseModel.get('date')
                 };
                 this.currentView = new ModelsView({
                     options: options
@@ -116,9 +116,9 @@ var AppView = Backbone.View.extend({
             case 'category':
                 this.enableFilters();
                 options = {
-                    'categories_filter': params,
+                    'categories': params,
                     'sort_by': this.browseModel.get('sortBy'),
-                    'date_filter': this.browseModel.get('date_filter')
+                    'date': this.browseModel.get('date')
                 };
                 this.currentView = new ModelsView({
                     options: options
@@ -129,7 +129,7 @@ var AppView = Backbone.View.extend({
                 options = {
                     'search': params,
                     'sort_by': this.browseModel.get('sortBy'),
-                    'date_filter': this.browseModel.get('date_filter')
+                    'date': this.browseModel.get('date')
                 };
                 this.currentView = new ModelsView({
                     options: options
@@ -138,7 +138,7 @@ var AppView = Backbone.View.extend({
             case 'likes':
                 this.disableFilters();
                 options = {
-                    'liked_by_filter': params,
+                    'liked_by': params,
                     'sort_by': ''
                 };
                 this.currentView = new ModelsView({
