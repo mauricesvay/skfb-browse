@@ -9,9 +9,14 @@ var Grid = React.createClass({
         }.bind(this));
 
         return (
-            <ul className="grid">
-                {items}
-            </ul>
+            <div>
+                <ul className="grid">
+                    {items}
+                </ul>
+                <div style={{padding: '10px', clear: 'both', textAlign: 'center'}}>
+                    <button onClick={this.props.loadMoreHandler}>Load more</button>
+                </div>
+            </div>
         );
     }
 });

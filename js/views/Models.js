@@ -77,7 +77,8 @@ var AppView = Backbone.View.extend({
             React.createElement(
                 Grid, {
                     models: data,
-                    mouseOverHandler: this.onMouseOver.bind(this)
+                    mouseOverHandler: this.onMouseOver.bind(this),
+                    loadMoreHandler: this.loadMore.bind(this)
                 }
             ),
             this.el
