@@ -15,6 +15,7 @@ var AppView = Backbone.View.extend({
 
     initialize: function( options ) {
         this.options = options.options;
+        this.parentView = options.parent;
         this.model = new Backbone.Model();
         this.load();
         this.$el.empty();
@@ -78,7 +79,8 @@ var AppView = Backbone.View.extend({
                 Grid, {
                     models: data,
                     mouseOverHandler: this.onMouseOver.bind(this),
-                    loadMoreHandler: this.loadMore.bind(this)
+                    loadMoreHandler: this.loadMore.bind(this),
+                    clickHandler: this.onClick.bind(this)
                 }
             ),
             this.el
@@ -102,6 +104,12 @@ var AppView = Backbone.View.extend({
                 }.bind(this));
             }.bind(this), 2000);
         }
+    },
+
+    onClick: function( e ) {
+        e.preventDefault();
+        var uid = e.currentTarget.getAttribute('data-uid');
+        this.parentView.router.navigate("model/" + uid, {trigger: true});
     },
 
     remove: function() {

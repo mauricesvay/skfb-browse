@@ -250,3 +250,7 @@ a {
     opacity: 1;
     transition: opacity .2s;
 }
+
+.popup-overlay {
+    background: rgba(0,0,0,.6);
+}

@@ -9,6 +9,7 @@ var Homepage = require('./Homepage');
 var ModelsView = require('./Models');
 var Sidebar = require('./Sidebar');
 var FiltersView = require('./Filters');
+var ModelView = require('./Model');
 
 var AppView = Backbone.View.extend({
 
@@ -90,7 +91,8 @@ var AppView = Backbone.View.extend({
                 }
                 console.log(options);
                 this.currentView = new ModelsView({
-                    options: options
+                    options: options,
+                    parent: this
                 });
                 break;
             case 'popular':
@@ -100,7 +102,8 @@ var AppView = Backbone.View.extend({
                     'sort_by': '-viewCount'
                 }
                 this.currentView = new ModelsView({
-                    options: options
+                    options: options,
+                    parent: this
                 });
                 break;
             case 'recent':
@@ -110,7 +113,8 @@ var AppView = Backbone.View.extend({
                     'date': this.browseModel.get('date')
                 };
                 this.currentView = new ModelsView({
-                    options: options
+                    options: options,
+                    parent: this
                 });
                 break;
             case 'category':
@@ -121,7 +125,8 @@ var AppView = Backbone.View.extend({
                     'date': this.browseModel.get('date')
                 };
                 this.currentView = new ModelsView({
-                    options: options
+                    options: options,
+                    parent: this
                 });
                 break;
             case 'search':
@@ -132,7 +137,8 @@ var AppView = Backbone.View.extend({
                     'date': this.browseModel.get('date')
                 };
                 this.currentView = new ModelsView({
-                    options: options
+                    options: options,
+                    parent: this
                 });
                 break;
             case 'likes':
@@ -142,7 +148,8 @@ var AppView = Backbone.View.extend({
                     'sort_by': ''
                 };
                 this.currentView = new ModelsView({
-                    options: options
+                    options: options,
+                    parent: this
                 });
                 break;
             default:
@@ -153,6 +160,13 @@ var AppView = Backbone.View.extend({
         this.params = params;
 
         this.$('.content').append(this.currentView.el);
+    },
+
+    showModel: function( uid ) {
+        new ModelView({
+            uid: uid,
+            parent: this
+        });
     }
 });
 

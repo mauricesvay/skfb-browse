@@ -13,10 +13,19 @@ var Router = Backbone.Router.extend({
         'recent': 'recent',
         'cat/:category': 'category',
         'likes/:uid': 'likes',
+        'model/:uid': 'model'
     },
 
     initialize: function( options ) {
         this.appView = options.appView;
+        this.previousRoutes = [];
+        this.listenTo(this, 'route', function(name, args){
+            this.previousRoutes.push({
+                name : name,
+                args : args,
+                fragment : Backbone.history.fragment
+            });
+        }.bind(this));
     },
 
     homepage: function() {
@@ -28,6 +37,7 @@ var Router = Backbone.Router.extend({
     },
 
     staffpicks: function() {
+        console.log('Go to staffpicks');
         this.appView.goTo('staffpicks');
     },
 
@@ -41,6 +51,10 @@ var Router = Backbone.Router.extend({
 
     likes: function( uid ) {
         this.appView.goTo('likes', uid );
+    },
+
+    model: function( uid ) {
+        this.appView.showModel( uid );
     }
 });
 
